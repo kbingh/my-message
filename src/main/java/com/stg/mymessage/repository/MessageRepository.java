@@ -1,5 +1,9 @@
 package com.stg.mymessage.repository;
 
-public interface MessageRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.stg.mymessage.domain.Message;
+
+public interface MessageRepository extends JpaRepository<Message, Long> {
 
 }
