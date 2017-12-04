@@ -1,36 +1,14 @@
 package com.stg.mymessage.service;
 
+import com.stg.mymessage.domain.User;
+
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+public interface UserService {
 
-import com.stg.mymessage.domain.User;
-import com.stg.mymessage.repository.UserRepository;
-
-@Service
-public class UserService {
-
-	@Autowired
-	public UserRepository userRepository;
-
-	public User getUserById(Long userId) {
-		return userRepository.findOne(userId);
-	}
-	
-	public List<User> findAllUsers(){
-		return userRepository.findAll();
-	}
-	
-	public void createUser(User user) {
-		userRepository.save(user);
-	}
-	
-	public void deleteUser(User user) {
-		userRepository.delete(user);
-	}
-
-	public User findUserByName(String firstName){
-		return userRepository.findUserByFirstName(firstName);
-	}
+	User getUserById(Long userId);
+	List<User> findAllUsers();
+	void createUser(User user);
+	void deleteUser(User user);
+	User findUserByName(String firstName);
 }

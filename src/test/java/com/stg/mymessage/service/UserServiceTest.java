@@ -26,13 +26,13 @@ public class UserServiceTest {
     static class EmployeeServiceImplTestContextConfiguration {
 
         @Bean
-        public UserService userService() {
-            return new UserService();
+        public UserServiceImpl userService() {
+            return new UserServiceImpl();
         }
     }
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     User frodo = null;
 
