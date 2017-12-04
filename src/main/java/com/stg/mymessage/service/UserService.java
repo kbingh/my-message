@@ -10,15 +10,10 @@ import com.stg.mymessage.repository.UserRepository;
 
 @Service
 public class UserService {
-	
+
 	@Autowired
-	UserRepository userRepository;
-	
-	
-	public UserService(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
-	
+	public UserRepository userRepository;
+
 	public User getUserById(Long userId) {
 		return userRepository.findOne(userId);
 	}
@@ -33,5 +28,9 @@ public class UserService {
 	
 	public void deleteUser(User user) {
 		userRepository.delete(user);
+	}
+
+	public User findUserByName(String firstName){
+		return userRepository.findUserByFirstName(firstName);
 	}
 }
