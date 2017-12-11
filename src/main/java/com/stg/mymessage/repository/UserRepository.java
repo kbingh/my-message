@@ -1,11 +1,11 @@
 package com.stg.mymessage.repository;
 
+import com.stg.mymessage.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.stg.mymessage.domain.User;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findUserByFirstName(String firstName);
+public interface UserRepository extends JpaRepository<User, Integer> {
+    User findByUserName(String userName);
 }
+

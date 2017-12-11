@@ -1,6 +1,6 @@
 package com.stg.mymessage.service;
 
-import com.stg.mymessage.domain.User;
+import com.stg.mymessage.model.User;
 import com.stg.mymessage.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,28 +8,38 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
-    public UserRepository userRepository;
+    UserRepository userRepository;
 
-    public User getUserById(Long userId) {
-        return userRepository.findOne(userId);
-    }
-
-    public List<User> findAllUsers(){
+    @Override
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
+    @Override
+    public User getUserById(Integer userId) {
+        return userRepository.findOne(userId);
+    }
+
+    @Override
+    public User getUserByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
+    @Override
     public User createUser(User user) {
         return userRepository.save(user);
     }
 
+    @Override
     public void deleteUser(User user) {
-        userRepository.delete(user);
+         userRepository.delete(user);
     }
 
-    public User findUserByName(String firstName){
-        return userRepository.findUserByFirstName(firstName);
+    @Override
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
     }
 }
