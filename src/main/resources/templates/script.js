@@ -1,52 +1,43 @@
-$( document ).ready(function() {
+$("#userForm").submit(function(event) {
+    // Prevent the form from submitting via the browser.
+    event.preventDefault();
 
-    // SUBMIT FORM
-    $("#customerForm").submit(function(event) {
-        // Prevent the form from submitting via the browser.
-        event.preventDefault();
-        ajaxPost();
+    var name = $("#userName").val();
+    $.ajax({
+        type: "POST",
+        url: "/addUser?userName=" + name,
+        dataType: "plain/text",
+        success: function (result) {
+
+            $(".list-group").append("<li>" + result.userName + "</li>");
+        },
+
+        data: name
     });
 
-
-    function ajaxPost(){
-
-        // PREPARE FORM DATA
-        var user = {
-            userName : $("#userName").val()
-        }
-
-        // DO POST
-        $.ajax({
-            type : "POST",
-            contentType : "application/json",
-            url : window.location + "/addUser",
-            data : JSON.stringify(user),
-            dataType : 'json',
-            success : function(result) {
-                if(result.status == "Done"){
-                    $("#postResultDiv").html("<p style='background-color:#7FA7B0; color:white; padding:20px 20px 20px 20px'>" +
-                        "Post Successfully! <br>" +
-                        "---> Customer's Info: FirstName = " +
-                        result.data.firstname + " ,LastName = " + result.data.lastname + "</p>");
-                }else{
-                    $("#postResultDiv").html("<strong>Error</strong>");
-                }
-                console.log(result);
-            },
-            error : function(e) {
-                alert("Error!")
-                console.log("ERROR: ", e);
-            }
-        });
-
-        // Reset FormData after Posting
-        resetData();
-
-    }
-
-    function resetData(){
-        $("#userName").val("");
-
-    }
 });
 
+function findAll() {
+
+    $.ajax({
+        type: "GET",
+        url: "/users",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+            renderJsonList(result)
+        }
+    });
+}
+
+function renderJsonList(result){
+
+    $( "#allUserNamesList").empty();
+
+    $.each(result, function (id, user) {
+
+        $(".list-group").append("<li>" + user.userName + "</li>");
+
+    });
+
+}

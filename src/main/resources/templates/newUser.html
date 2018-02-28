@@ -54,8 +54,8 @@
             url: "/addUser?userName=" + name,
             dataType: "plain/text",
             success: function (result) {
-                debugger;
-                renderJsonList(result)
+
+                $(".list-group").append("<li>" + result.userName + "</li>");
             },
 
             data: name
