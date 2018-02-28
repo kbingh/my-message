@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-    <title>Title</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
 </head>
 <body>
-    hello world
+<div class="jumbotron">
+    <h1>Message Me!</h1>
+    <div class="container">
+
+        <div class="btn-group">
+            <a type="button" class="btn btn-default"  href="newUser">New User</a>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Users <span class="caret"></span>
+            </button>
+            <ul id="user_dropdown" class="dropdown-menu">
+                <li><a href="#">User</a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
 </body>
 </html>

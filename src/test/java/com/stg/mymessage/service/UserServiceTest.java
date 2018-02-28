@@ -35,20 +35,13 @@ public class UserServiceTest {
     @Before
     public void setUp(){
 
-        frodo = new User();
-        frodo.setUserName("Frodo");
+        userService.createUser("Frodo");
 
-        userService.createUser(frodo);
 
-        bilbo = new User();
-        bilbo.setUserName("Bilbo");
+        userService.createUser("Bilbo");
 
-        userService.createUser(bilbo);
 
-        gollum = new User();
-        gollum.setUserName("Gollum");
-
-        userService.createUser(gollum);
+        userService.createUser("Gollum");
     }
 
     @Test
@@ -67,10 +60,5 @@ public class UserServiceTest {
         assert(userList.contains(gollum));
     }
 
-    @After
-    public void tearDown(){
-        userService.createUser(frodo);
-        userService.createUser(bilbo);
-        userService.createUser(gollum);
-    }
+
 }

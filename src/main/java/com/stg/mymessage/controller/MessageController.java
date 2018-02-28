@@ -16,12 +16,9 @@ public class MessageController {
     @Autowired
     MessageService messageService;
 
-    @RequestMapping(value = "/messages", method = RequestMethod.GET)
-    public ResponseEntity<Collection<Message>> getMessages() {
-
-        List<Message> messageList = messageService.getAllMessages();
-
-        return new ResponseEntity<>(messageList, HttpStatus.OK);
+    @ModelAttribute("messages")
+    public List<Message> messages() {
+        return messageService.getAllMessages();
     }
 
     @RequestMapping(value = "/incomingMessages", method = RequestMethod.GET)

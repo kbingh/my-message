@@ -38,21 +38,10 @@ public class UserController {
     }
 
 
-    @RequestMapping(value = "/userName{userName}", method = RequestMethod.GET)
-    public ResponseEntity<User> getByUserName(@RequestParam("userName") String userName) {
-        User user = userService.getUserByUserName(userName);
-
-        if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(user, HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST)
-    public ResponseEntity<User> addUser(@RequestBody User user) {
-        User newUser = userService.createUser(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+    @RequestMapping(value="/addUser", method=RequestMethod.POST)
+    public ResponseEntity<User> create(@RequestParam("userName") String userName) {
+        User user = userService.createUser(userName);
+        return ResponseEntity.accepted().body(user);
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
