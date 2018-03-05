@@ -22,8 +22,6 @@ public class MessageController {
         return messageService.getAllMessages();
     }
 
-
-
     @RequestMapping(value="/sendMessage", method = RequestMethod.POST, produces="application/json", consumes="application/json")
     public ResponseEntity<Message> sendMessage(@RequestBody Message message) {
 
