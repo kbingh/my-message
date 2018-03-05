@@ -18,7 +18,7 @@ public class Message {
     @Column(name = "subject")
     private String subject;
 
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = {CascadeType.MERGE})
     @JoinTable(
             name="user_message",
             joinColumns = @JoinColumn( name="message_id"),

@@ -10,7 +10,7 @@ $(function() {
             dataType: "plain/text",
             success: function (result) {
 
-                $(".list-group").append("<li>" + result.userName + "</li>");
+                $("#messageReceiverName").append("<li>" + result.userName + "</li>");
             },
 
             data: name

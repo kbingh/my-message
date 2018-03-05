@@ -34,7 +34,7 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public Message sendMessage(Message message) {
 
-        //userRepository.save(message.getUserList());
+       userRepository.save(message.getUserList());
         return messageRepository.save(message);
     }
 
@@ -46,5 +46,18 @@ public class MessageServiceImpl implements MessageService {
     @Override
     public void deleteAllMessages() {
         messageRepository.deleteAll();
+    }
+
+    @Override
+    public User createUser(String userName) {
+        User user = new User();
+        user.setUserName(userName);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public void deleteUser(User user) {
+
+        userRepository.delete(user);
     }
 }

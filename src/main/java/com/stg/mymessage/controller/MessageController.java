@@ -30,5 +30,18 @@ public class MessageController {
         return new ResponseEntity<>(newMessage, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/addUser/{userName}", method = RequestMethod.POST)
+    public ResponseEntity<User> createUser(@PathVariable("userName") String userName) {
+
+
+        User user = messageService.createUser(userName);
+
+        if(user != null){
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(user, HttpStatus.BAD_REQUEST);
+        }
+    }
+
 
 }
