@@ -49,13 +49,13 @@ public class MessageController {
         }
     }
 
-    @RequestMapping(value="sendMessage", method = RequestMethod.POST)
+    @RequestMapping(value="/sendMessage", method = RequestMethod.POST, produces="application/json", consumes="application/json")
     public ResponseEntity<Message> sendMessage(@RequestBody Message message) {
         Message newMessage = messageService.sendMessage(message);
-        return new ResponseEntity<>(newMessage, HttpStatus.CREATED);
+        return new ResponseEntity<>(newMessage, HttpStatus.OK);
     }
 
-    @RequestMapping(value="deleteMessage", method = RequestMethod.DELETE)
+    @RequestMapping(value="/deleteMessage", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteMessage(@PathVariable Message message) {
 
         messageService.deleteMessage(message);

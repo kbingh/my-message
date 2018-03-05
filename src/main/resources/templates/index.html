@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
 <head>
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
     <!-- jQuery library -->
@@ -8,7 +9,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" th:src="@{script.js}" />
 
 </head>
 <body>
@@ -18,13 +19,19 @@
 
         <div class="btn-group">
             <a type="button" class="btn btn-default"  href="newUser">New User</a>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Users <span class="caret"></span>
-            </button>
-            <ul id="user_dropdown" class="dropdown-menu">
-                <li><a href="#">User</a></li>
+            <div class="col-sm-7" style="margin:20px 0px 20px 0px">
+                <button id="getAllUsers" onclick="findAll()" type="button" class="btn btn-primary">Get All Users</button>
+                <div id="getResultDiv" style="padding:20px 10px 20px 50px">
+                    <ul id="allUserNamesList" class="list-group">
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-            </ul>
+        <div class="btn-group">
+            <a type="button" class="btn btn-default"  href="newMessage">New Message</a>
+          
+
         </div>
     </div>
 </div>
