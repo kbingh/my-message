@@ -10,16 +10,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", unique = true, nullable = false)
-    private int userId;
+    private Integer userId;
 
     @Column(name = "user_name")
     private String userName;
 
-     public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -30,4 +30,6 @@ public class User {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+
 }

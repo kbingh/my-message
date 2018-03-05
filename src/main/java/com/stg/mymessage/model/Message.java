@@ -1,6 +1,7 @@
 package com.stg.mymessage.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "message")
@@ -14,11 +15,16 @@ public class Message {
     @Column(name = "message")
     private String message;
 
-    @Column(name = "from_user_name")
-    private String fromUserName;
+    @Column(name = "subject")
+    private String subject;
 
-    @Column(name = "to_user_name")
-    private String toUserName;
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name="user_message",
+            joinColumns = @JoinColumn( name="message_id"),
+            inverseJoinColumns = @JoinColumn( name="user_id")
+    )
+    private List<User> userList;
 
     public int getMessageId() {
         return messageId;
@@ -36,19 +42,19 @@ public class Message {
         this.message = message;
     }
 
-    public String getFromUserName() {
-        return fromUserName;
+    public String getSubject() {
+        return subject;
     }
 
-    public void setFromUserName(String fromUserName) {
-        this.fromUserName = fromUserName;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
-    public String getToUserName() {
-        return toUserName;
+    public List<User> getUserList() {
+        return userList;
     }
 
-    public void setToUserName(String toUserName) {
-        this.toUserName = toUserName;
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
     }
 }

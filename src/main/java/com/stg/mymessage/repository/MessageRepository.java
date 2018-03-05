@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Integer> {
 
-    List<Message> findByFromUserName(String fromUserName);
-    List<Message> findByToUserName(String toUserName);
+
 }

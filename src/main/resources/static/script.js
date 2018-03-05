@@ -19,6 +19,16 @@ $(function() {
     });
 
 
+    $.ajax({
+        url: '/users',
+        dataType: 'application/json',
+        complete: function(data){
+            console.log(data)
+        },
+        success: function(data){
+            console.log(data)
+        }
+
 
 
 });

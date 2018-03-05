@@ -35,11 +35,7 @@ public class MessageServiceTest {
     @Before
     public void setUp(){
 
-        message = new Message();
-        message.setFromUserName("Gandalf");
-        message.setToUserName("Balrog");
-        message.setMessage("You shall not pass!");
-        messageService.sendMessage(message);
+
     }
 
     @Test
