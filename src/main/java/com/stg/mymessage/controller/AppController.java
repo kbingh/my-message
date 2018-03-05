@@ -10,19 +10,4 @@ public class AppController {
     public String index() {
         return "index";
     }
-
-    @RequestMapping("/newUser")
-    public String newUser() {
-        return "newUser";
-    }
-
-    @RequestMapping("/newMessage")
-    public String newMessage() {
-        return "newMessage";
-    }
-
-
-
-
-
 }
