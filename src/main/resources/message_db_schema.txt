@@ -1,18 +1,22 @@
-CREATE DATABASE IF NOT EXISTS `message`;
-USE `message`;
-
-DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `user_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(45) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(45) NOT NULL unique,
   PRIMARY KEY (`user_id`)
+ ) ENGINE=InnoDB;
+
+
+CREATE TABLE `message` (
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
+  `message` varchar(255) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`message_id`)
 ) ENGINE=InnoDB;
 
-DROP TABLE IF EXISTS `message`;
-CREATE TABLE `message` (
-  `message_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `message` varchar(255) DEFAULT NULL,
-  `from_user_name` varchar(255) NOT NULL,
-  `to_user_name` varchar(255) NOT NULL,
-  PRIMARY KEY (`message_id`)
+
+CREATE TABLE `user_message` (
+  `user_id` INT(11),
+  `message_id` INT(11),
+   PRIMARY KEY (`user_id`, `message_id`),
+    FOREIGN KEY FK_message_sender_id ( `user_id`) REFERENCES `user`(`user_id`) ON UPDATE CASCADE,
+    FOREIGN KEY FK_message_message_id (`message_id`) REFERENCES `message`(`message_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB;
