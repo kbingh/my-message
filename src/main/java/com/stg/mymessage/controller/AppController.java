@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AppController {
 
-    @Autowired
-    MessageService messageService;
-
-
 
     @RequestMapping("/")
     public String index() {

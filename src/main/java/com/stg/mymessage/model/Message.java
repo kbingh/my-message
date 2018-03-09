@@ -1,6 +1,7 @@
 package com.stg.mymessage.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,15 @@ public class Message {
             joinColumns = @JoinColumn( name="message_id"),
             inverseJoinColumns = @JoinColumn( name="user_id")
     )
-    private List<User> userList;
+    private List<User> userList = new ArrayList<>();
+
+    @OneToOne
+    @JoinTable(
+            name="user_message",
+            joinColumns = @JoinColumn( name="message_id"),
+            inverseJoinColumns = @JoinColumn( name="user_id")
+    )
+    private User user;
 
     public int getMessageId() {
         return messageId;
@@ -56,5 +65,13 @@ public class Message {
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

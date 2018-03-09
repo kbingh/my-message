@@ -17,25 +17,56 @@
     <div class="container text-center">
         <div class="btn-group">
             <div class="btn-group">
-                <a type="button" class="btn btn-default" data-toggle="collapse" data-target="#newMessage">New
+                <a type="button" id="inboxButton" onclick="findAll()" class="btn btn-default" data-toggle="collapse" data-target="#inbox">Inbox</a>
+                <a type="button" id="newMessageButton" onclick="findAll()" class="btn btn-default" data-toggle="collapse" data-target="#newMessage">New
                     Message</a>
+
                 <a type="button" class="btn btn-default" data-toggle="collapse" data-target="#newUser">New User</a>
             </div>
         </div>
     </div><br/><br/>
+    <div id="inbox" class="collapse">
+        <div class="container">
+            <div class="panel panel-default" style="margin-top:20px">
+                <h3 style="color:blue">Inbox</h3>
+                <div>
+                    <form class="form-inline" style="margin:20px 20px 20px 20px" id="userForm">
+                        <label for="messageBody">Name: </label>
+
+                        <select id="inboxSelectList" onchange="getMessageList()" class="userSelectList selectpicker">
+                        </select>
+
+                        <table id="grid-data" class="table table-condensed table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th data-column-id="sender" data-order="desc">Sender</th>
+                                <th data-column-id="received" data-order="desc">Received</th>
+                                <th data-column-id="subject" data-formatter="subject" data-sortable="false">subject</th>
+                                <th data-column-id="message" data-formatter="message" data-sortable="false">Message</th>
+                            </tr>
+                            </thead>
+                            <tbody id="messageTableData">
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>
     <div id="newMessage" class="collapse">
         <div class="panel panel-default" style="margin-top:20px">
             <div class="container">
                 <form id="sendMessageForm">
                     <div class="form-group">
-                        <label for="messageBody"><h1>Sender</h1></label>
-                        <input type="text" id="messageSenderName" class="form-control"/>
-                        <label for="messageBody">Send To:</label>
-                        <select id="messageReceiverName" class="selectpicker">
-                            <option>Gandalf</option>
-                            <option>Balrog</option>
-                            <option>Frodo</option>
+                        <label for="messageBody">From: </label>
+
+                        <select id="sentFromSelectList" class="userSelectList selectpicker">
                         </select>
+                        <label for="messageBody">To: </label>
+                        <select id="sentToSelectList" class="userSelectList selectpicker">
+                        </select>
+                        <label for="messageSubject">Subject</label>
+                        <input type="text" id="messageSubject"/>
                         <label for="messageBody"><h1>Message</h1></label>
                         <textarea class="form-control" id="messageBody" rows="5"></textarea>
                         <button onclick="sendMessage()" class="btn btn-default"
@@ -51,7 +82,7 @@
             <div class="panel panel-default" style="margin-top:20px">
                 <h3 style="color:blue">Add User</h3>
                 <div>
-                    <form class="form-inline" style="margin:20px 20px 20px 20px" id="userForm">
+                    <form class="form-inline" style="margin:20px 20px 20px 20px" id="newUserForm">
                         <div class="form-group">
                             <label for="userName" style="margin-right:5px">User Name:</label>
                             <input type="text" class="form-control" id="userName" placeholder="Enter User Name"/>
@@ -61,10 +92,29 @@
                         </button>
                     </form>
                 </div>
-                <div class="col-sm-7" id="postResultDiv">
-                </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="messageModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
 </body>

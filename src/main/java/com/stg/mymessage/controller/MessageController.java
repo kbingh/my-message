@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,17 +16,34 @@ public class MessageController {
     @Autowired
     MessageService messageService;
 
-    @ModelAttribute("messages")
-    public List<Message> messages() {
+    @RequestMapping(value="/messages", method = RequestMethod.GET)
+    public List<Message> getMessages() {
         return messageService.getAllMessages();
     }
 
-    @RequestMapping(value="/sendMessage", method = RequestMethod.POST, produces="application/json", consumes="application/json")
-    public ResponseEntity<Message> sendMessage(@RequestBody Message message) {
+    @RequestMapping(value="/messages/{userId}", method = RequestMethod.GET,  produces="application/json")
+    public ResponseEntity<List<Message>> getMessageByUserId(@PathVariable("userId") Integer userId) {
+        List<Message> messageList = messageService.getMessageByUserId(userId);
+        if(messageList != null){
+            return new ResponseEntity<>(messageList, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(messageList, HttpStatus.BAD_REQUEST);
+        }
+    }
 
+    @RequestMapping(value="/users", method = RequestMethod.GET,  produces="application/json")
+    public ResponseEntity<List<User>> getUsers() {
+        return new ResponseEntity<>(messageService.getAllUsers(), HttpStatus.OK);
+    }
 
-        Message newMessage = messageService.sendMessage(message);
-        return new ResponseEntity<>(newMessage, HttpStatus.OK);
+    @RequestMapping(value = "/send", method = RequestMethod.POST)
+    public ResponseEntity<Message> update(@RequestBody Message message) {
+       message =  messageService.sendMessage(message);
+        if(message != null){
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @RequestMapping(value="/addUser/{userName}", method = RequestMethod.POST)

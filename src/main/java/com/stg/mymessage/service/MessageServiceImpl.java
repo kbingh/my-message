@@ -24,28 +24,20 @@ public class MessageServiceImpl implements MessageService {
     }
 
 
-
-
     @Override
-    public Message getMessageById(Integer messageId) {
-        return messageRepository.findOne(messageId);
+    public List<Message> getMessageByUserId(Integer messageId) {
+
+        User user = userRepository.findOne(messageId);
+
+        return messageRepository.getMessageByUser(user);
     }
 
     @Override
     public Message sendMessage(Message message) {
 
-       userRepository.save(message.getUserList());
+        userRepository.save(message.getUserList());
+
         return messageRepository.save(message);
-    }
-
-    @Override
-    public void deleteMessage(Message message) {
-        messageRepository.delete(message);
-    }
-
-    @Override
-    public void deleteAllMessages() {
-        messageRepository.deleteAll();
     }
 
     @Override
@@ -56,8 +48,13 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(List<User> userList) {
 
-        userRepository.delete(user);
+        userRepository.delete(userList);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
