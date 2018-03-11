@@ -1,0 +1,31 @@
+body {
+
+    background-color:navy;
+}
+
+.btn {
+    background-color:navy;
+    color:white;
+}
+.jumbotron {
+    background-color:white;
+}
+
+.jumbotron h1{
+
+    color: burlywood;
+}
+
+.jumbotron h3{
+
+    color: blue;
+}
+
+#messageSubject{
+    width:400px;
+}
+
+#grid-data th{
+    text-align: center;
+}
+

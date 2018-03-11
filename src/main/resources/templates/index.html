@@ -3,6 +3,7 @@
 <head>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,6 +40,7 @@
                         <table id="grid-data" class="table table-condensed table-hover table-striped">
                             <thead>
                             <tr>
+                                <th data-column-id="sentDate" data-order="desc">Sent Date</th>
                                 <th data-column-id="sender" data-order="desc">Sender</th>
                                 <th data-column-id="received" data-order="desc">Received</th>
                                 <th data-column-id="subject" data-formatter="subject" data-sortable="false">subject</th>
@@ -58,16 +60,17 @@
             <div class="container">
                 <form id="sendMessageForm">
                     <div class="form-group">
+                        <label for="messageBody"><h3>Message</h3></label><br/>
                         <label for="messageBody">From: </label>
 
                         <select id="sentFromSelectList" class="userSelectList selectpicker">
                         </select>
                         <label for="messageBody">To: </label>
                         <select id="sentToSelectList" class="userSelectList selectpicker">
-                        </select>
+                        </select><br/>
                         <label for="messageSubject">Subject</label>
                         <input type="text" id="messageSubject"/>
-                        <label for="messageBody"><h1>Message</h1></label>
+
                         <textarea class="form-control" id="messageBody" rows="5"></textarea>
                         <button onclick="sendMessage()" class="btn btn-default"
                                 style="margin-left:20px; margin-right:5px">Send

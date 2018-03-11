@@ -1,7 +1,6 @@
 package com.stg.mymessage.model;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -9,10 +8,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id", nullable = false)
+    @Column(name = "user_id")
     private Integer userId;
 
-    @Column(name = "user_name", unique=true)
+    @Column(name = "user_name")
     private String userName;
 
     public Integer getUserId() {

@@ -36,7 +36,7 @@ public class MessageController {
         return new ResponseEntity<>(messageService.getAllUsers(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
+    @RequestMapping(value = "/sendMessage", method = RequestMethod.POST)
     public ResponseEntity<Message> update(@RequestBody Message message) {
        message =  messageService.sendMessage(message);
         if(message != null){

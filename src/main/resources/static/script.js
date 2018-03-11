@@ -36,6 +36,8 @@ function getMessageList() {
 
     var id;
 
+
+
     $.each($("#inboxSelectList option:selected"), function () {
 
         id = $(this).val();
@@ -50,23 +52,24 @@ function getMessageList() {
             $("#messageTableData").empty();
             $.each(result, function (index, item) {
 
-                console.log(item);
-
+                var created = formatDate(item.createDate);;
                 var message = item.message;
                 var subject = item.subject;
-                var sender = item.userList[0].userName;
-                var receiver = item.userList[1].userName;
+
+                var sender = item.sender.userName;
+                var receiver = item.receiver.userName;
+
 
                 var messageJson = {
-
                     "message" : message,
                     "subject" : subject
                 }
 
-                var aTag = "<a href='#'  subject='" +  subject + "' message='" +  message + "'  id='myForm' data-toggle='modal' data-target='#messageModal'>Click Me!</a>";
+                var aTag = "<a href='#'  subject='" +  subject + "' message='" +  message + "'  id='myForm' data-toggle='modal' data-target='#messageModal'>" +
+                    "<img src='image/message-circle-blue-35px.png' alt='mail icon' border='0'></a>";
 
                 $("#messageTableData").append("<tr id='myTbleRow'>" +
-                    "<td>" + sender + "</td><td>" + receiver + "</td><td>" + subject + "</td><td>" + aTag + "</td></tr>");
+                    "<td>" + created + "</td><td>" + sender + "</td><td>" + receiver + "</td><td>" + subject + "</td><td>" + aTag + "</td></tr>");
             });
         },
         error: function (error) {
@@ -74,6 +77,20 @@ function getMessageList() {
         }
     });
 }
+
+function formatDate(dateAsInteger) {
+
+    var date = new Date(dateAsInteger);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+    return date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
+}
+
 
 
 
@@ -103,14 +120,16 @@ function sendMessage() {
     var messageJson = {
         "message": message,
         "subject": subject,
-        "userList": [{
+
+
+        "sender": {
             "userId": senderId,
             "userName": sender
         },
-            {
+        "receiver"  :  {
                 "userId": receiverId,
                 "userName": receiver
-            }]
+            }
     }
     $.ajax({
         type: "POST",

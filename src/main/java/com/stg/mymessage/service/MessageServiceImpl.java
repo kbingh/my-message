@@ -29,13 +29,11 @@ public class MessageServiceImpl implements MessageService {
 
         User user = userRepository.findOne(messageId);
 
-        return messageRepository.getMessageByUser(user);
+        return messageRepository.getMessageByReceiverList(user);
     }
 
     @Override
     public Message sendMessage(Message message) {
-
-        userRepository.save(message.getUserList());
 
         return messageRepository.save(message);
     }

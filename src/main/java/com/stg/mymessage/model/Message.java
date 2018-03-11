@@ -19,21 +19,16 @@ public class Message {
     @Column(name = "subject")
     private String subject;
 
-    @OneToMany(cascade = {CascadeType.MERGE})
-    @JoinTable(
-            name="user_message",
-            joinColumns = @JoinColumn( name="message_id"),
-            inverseJoinColumns = @JoinColumn( name="user_id")
-    )
-    private List<User> userList = new ArrayList<>();
+    @Column(name = "sender_id")
+    private Integer senderId;
 
-    @OneToOne
+    @OneToMany(cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)
     @JoinTable(
             name="user_message",
             joinColumns = @JoinColumn( name="message_id"),
-            inverseJoinColumns = @JoinColumn( name="user_id")
+            inverseJoinColumns = @JoinColumn( name="receiver_id")
     )
-    private User user;
+    private List<User> receiverList;
 
     public int getMessageId() {
         return messageId;
@@ -59,19 +54,19 @@ public class Message {
         this.subject = subject;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public Integer getSenderId() {
+        return senderId;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setSenderId(Integer senderId) {
+        this.senderId = senderId;
     }
 
-    public User getUser() {
-        return user;
+    public List<User> getReceiverList() {
+        return receiverList;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setReceiverList(List<User> receiverList) {
+        this.receiverList = receiverList;
     }
 }
