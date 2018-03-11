@@ -36,8 +36,6 @@ function getMessageList() {
 
     var id;
 
-
-
     $.each($("#inboxSelectList option:selected"), function () {
 
         id = $(this).val();
@@ -56,14 +54,8 @@ function getMessageList() {
                 var message = item.message;
                 var subject = item.subject;
 
-                var sender = item.sender.userName;
-                var receiver = item.receiver.userName;
-
-
-                var messageJson = {
-                    "message" : message,
-                    "subject" : subject
-                }
+                var sender = item.sender;
+                var receiver = item.receiver;
 
                 var aTag = "<a href='#'  subject='" +  subject + "' message='" +  message + "'  id='myForm' data-toggle='modal' data-target='#messageModal'>" +
                     "<img src='image/message-circle-blue-35px.png' alt='mail icon' border='0'></a>";
@@ -91,9 +83,6 @@ function formatDate(dateAsInteger) {
     return date.getMonth()+1 + "/" + date.getDate() + "/" + date.getFullYear() + " " + strTime;
 }
 
-
-
-
 function sendMessage() {
     // Prevent the form from submitting via the browser.
     event.preventDefault();
@@ -118,22 +107,20 @@ function sendMessage() {
     var message = $("#messageBody").val();
 
     var messageJson = {
-        "message": message,
-        "subject": subject,
-
-
-        "sender": {
-            "userId": senderId,
-            "userName": sender
+        "message" : message,
+        "subject" : subject,
+        "sender" : {
+            "userId" : senderId,
+            "userName" : sender
         },
-        "receiver"  :  {
-                "userId": receiverId,
-                "userName": receiver
-            }
+        "receiverList" : [{
+            "userId" : receiverId,
+            "userName" : receiver
+        }]
     }
     $.ajax({
         type: "POST",
-        url: "/send",
+        url: "/sendMessage",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(messageJson),
@@ -146,12 +133,8 @@ function sendMessage() {
             console.log(e, "error");
 
         }
-
-
     });
-
 }
-
 
 function findAll() {
 
