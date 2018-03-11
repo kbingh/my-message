@@ -19,8 +19,9 @@ public class Message {
     @Column(name = "subject")
     private String subject;
 
-    @Column(name = "sender_id")
-    private Integer senderId;
+    @OneToOne
+    @JoinColumn(name = "sender_id", referencedColumnName = "user_id")
+    private User sender;
 
     @OneToMany(cascade = {CascadeType.MERGE},fetch= FetchType.EAGER)
     @JoinTable(
@@ -54,12 +55,12 @@ public class Message {
         this.subject = subject;
     }
 
-    public Integer getSenderId() {
-        return senderId;
+    public User getSender() {
+        return sender;
     }
 
-    public void setSenderId(Integer senderId) {
-        this.senderId = senderId;
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 
     public List<User> getReceiverList() {
