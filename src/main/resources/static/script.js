@@ -154,20 +154,7 @@ function findAll() {
 
             });
         }
-
-
     });
-
-    // $.getJSON("/users", null, function(data) {
-    //     $("#userSelectList option").remove(); // Remove all <option> child tags.
-    //     $.each(data.users, function(index, item) { // Iterates through a collection
-    //         $("#userSelectList").append( // Append an object to the inside of the select box
-    //             $("<option></option>") // Yes you can do this.
-    //                 .text(item.userName)
-    //                 .val(item.userId)
-    //         );
-    //     });
-    // });
 }
 
 function renderJsonList(result) {
@@ -183,7 +170,5 @@ function renderJsonList(result) {
             $("<option></option>").val(value.userId)
                 .text(value.userName)
         );
-
-
     });
 }

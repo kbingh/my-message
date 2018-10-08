@@ -7,6 +7,7 @@ import com.stg.mymessage.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,11 +26,12 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public List<Message> getMessageByUserId(Integer messageId) {
+    public List<Message>getMessageByUser(User user) {
 
-        User user = userRepository.findOne(messageId);
+        List<User> userList = new ArrayList<>();
+        userList.add(user);
 
-        return messageRepository.getMessageByReceiverList(user);
+        return messageRepository.getMessageByReceiverList(userList);
     }
 
     @Override

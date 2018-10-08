@@ -21,9 +21,9 @@ public class MessageController {
         return messageService.getAllMessages();
     }
 
-    @RequestMapping(value="/messages/{userId}", method = RequestMethod.GET,  produces="application/json")
-    public ResponseEntity<List<Message>> getMessageByUserId(@PathVariable("userId") Integer userId) {
-        List<Message> messageList = messageService.getMessageByUserId(userId);
+    @RequestMapping(value="/received", method = RequestMethod.POST,  produces="application/json")
+    public ResponseEntity<List<Message>> getMessageByUserId(@RequestBody User user) {
+        List<Message> messageList = messageService.getMessageByUser(user);
         if(messageList != null){
             return new ResponseEntity<>(messageList, HttpStatus.OK);
         } else {
