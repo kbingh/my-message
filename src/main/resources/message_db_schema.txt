@@ -1,3 +1,8 @@
+DROP Table if exists `user_message`;
+DROP Table if exists `message`;
+DROP Table if exists `user`;
+
+
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `user_name` varchar(45) NOT NULL unique,
@@ -10,7 +15,9 @@ CREATE TABLE `message` (
   `message` varchar(255) DEFAULT NULL,
   `subject` varchar(255) DEFAULT NULL,
   `sender_id` int(11) NOT NULL,
-  PRIMARY KEY (`message_id`)
+  `create_date` TIMESTAMP NOT NULL DEFAULT current_timestamp,
+  PRIMARY KEY (`message_id`),
+  FOREIGN KEY FK_message_sender_id (`sender_id`) REFERENCES `user`(`user_id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 
 

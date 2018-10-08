@@ -53,15 +53,17 @@ function getMessageList() {
                 var created = formatDate(item.createDate);;
                 var message = item.message;
                 var subject = item.subject;
+                var sender = item.sender.userName;
 
-                var sender = item.sender;
-                var receiver = item.receiver;
+                $.each(item.receiverList, function (i, obj){
 
-                var aTag = "<a href='#'  subject='" +  subject + "' message='" +  message + "'  id='myForm' data-toggle='modal' data-target='#messageModal'>" +
-                    "<img src='image/message-circle-blue-35px.png' alt='mail icon' border='0'></a>";
+                    var receiver = obj.userName;
+                    var aTag = "<a href='#'  subject='" +  subject + "' message='" +  message + "'  id='myForm' data-toggle='modal' data-target='#messageModal'>" +
+                        "<img src='image/message-circle-blue-35px.png' alt='mail icon' border='0'></a>";
 
-                $("#messageTableData").append("<tr id='myTbleRow'>" +
-                    "<td>" + created + "</td><td>" + sender + "</td><td>" + receiver + "</td><td>" + subject + "</td><td>" + aTag + "</td></tr>");
+                    $("#messageTableData").append("<tr id='myTbleRow'>" +
+                        "<td>" + created + "</td><td>" + sender + "</td><td>" + receiver + "</td><td>" + subject + "</td><td>" + aTag + "</td></tr>");
+                })
             });
         },
         error: function (error) {

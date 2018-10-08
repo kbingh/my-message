@@ -2,6 +2,7 @@ package com.stg.mymessage.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,9 @@ public class Message {
             inverseJoinColumns = @JoinColumn( name="receiver_id")
     )
     private List<User> receiverList;
+
+    @Column(name = "create_date")
+    private Date createDate;
 
     public int getMessageId() {
         return messageId;
@@ -69,5 +73,13 @@ public class Message {
 
     public void setReceiverList(List<User> receiverList) {
         this.receiverList = receiverList;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 }

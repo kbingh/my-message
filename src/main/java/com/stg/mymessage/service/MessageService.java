@@ -11,6 +11,5 @@ public interface MessageService {
     List<Message> getMessageByUser(User user);
     Message sendMessage(Message message);
     User createUser(String userName);
-    void deleteUser(List<User> userList);
     List<User> getAllUsers();
 }

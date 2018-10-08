@@ -24,7 +24,6 @@ public class MessageServiceImpl implements MessageService {
         return messageRepository.findAll();
     }
 
-
     @Override
     public List<Message>getMessageByUser(User user) {
 
@@ -45,12 +44,6 @@ public class MessageServiceImpl implements MessageService {
         User user = new User();
         user.setUserName(userName);
         return userRepository.save(user);
-    }
-
-    @Override
-    public void deleteUser(List<User> userList) {
-
-        userRepository.delete(userList);
     }
 
     @Override
