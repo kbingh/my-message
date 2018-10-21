@@ -1,4 +1,4 @@
-package com.stg.mymessage;
+package com.bingham.mymessage;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

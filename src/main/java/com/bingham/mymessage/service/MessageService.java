@@ -1,7 +1,7 @@
-package com.stg.mymessage.service;
+package com.bingham.mymessage.service;
 
-import com.stg.mymessage.model.Message;
-import com.stg.mymessage.model.User;
+import com.bingham.mymessage.model.Message;
+import com.bingham.mymessage.model.User;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.stg.mymessage.model;
+package com.bingham.mymessage.model;
 
 import javax.persistence.*;
 

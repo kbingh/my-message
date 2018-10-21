@@ -59,7 +59,7 @@ function getMessageList() {
 
                     var receiver = obj.userName;
                     var aTag = "<a href='#'  subject='" +  subject + "' message='" +  message + "'  id='myForm' data-toggle='modal' data-target='#messageModal'>" +
-                        "<img src='image/message-circle-blue-35px.png' alt='mail icon' border='0'></a>";
+                        "<img src='../../../../../sendMessage/src/main/resources/static/image/message-circle-blue-35px.png' alt='mail icon' border='0'></a>";
 
                     $("#messageTableData").append("<tr id='myTbleRow'>" +
                         "<td>" + created + "</td><td>" + sender + "</td><td>" + receiver + "</td><td>" + subject + "</td><td>" + aTag + "</td></tr>");

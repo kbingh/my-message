@@ -1,6 +1,6 @@
-package com.stg.mymessage.repository;
+package com.bingham.mymessage.repository;
 
-import com.stg.mymessage.model.User;
+import com.bingham.mymessage.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

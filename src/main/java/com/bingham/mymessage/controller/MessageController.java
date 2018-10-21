@@ -1,8 +1,8 @@
-package com.stg.mymessage.controller;
+package com.bingham.mymessage.controller;
 
-import com.stg.mymessage.model.Message;
-import com.stg.mymessage.model.User;
-import com.stg.mymessage.service.MessageService;
+import com.bingham.mymessage.model.Message;
+import com.bingham.mymessage.model.User;
+import com.bingham.mymessage.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

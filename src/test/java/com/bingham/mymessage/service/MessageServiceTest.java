@@ -1,9 +1,8 @@
-package com.stg.mymessage.service;
+package com.bingham.mymessage.service;
 
-import com.stg.mymessage.model.Message;
-import com.stg.mymessage.model.User;
-import com.stg.mymessage.repository.MessageRepository;
-import com.stg.mymessage.repository.UserRepository;
+import com.bingham.mymessage.model.Message;
+import com.bingham.mymessage.model.User;
+import com.bingham.mymessage.repository.MessageRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.stg.mymessage;
+package com.bingham.mymessage;
 
 		import org.springframework.boot.SpringApplication;
 		import org.springframework.boot.autoconfigure.SpringBootApplication;

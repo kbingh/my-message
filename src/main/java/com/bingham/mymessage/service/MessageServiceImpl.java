@@ -1,9 +1,9 @@
-package com.stg.mymessage.service;
+package com.bingham.mymessage.service;
 
-import com.stg.mymessage.model.Message;
-import com.stg.mymessage.model.User;
-import com.stg.mymessage.repository.MessageRepository;
-import com.stg.mymessage.repository.UserRepository;
+import com.bingham.mymessage.model.Message;
+import com.bingham.mymessage.model.User;
+import com.bingham.mymessage.repository.MessageRepository;
+import com.bingham.mymessage.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
